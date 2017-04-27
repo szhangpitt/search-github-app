@@ -4,7 +4,7 @@
   "description": "search github app",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test",
     "build:prepare": "mkdir -p dist",
     "build:static": "cp src/index.html dist/ && cp src/style.css dist/",
     "build:app": "webpack src/app.js dist/app.bundle.js",
@@ -30,6 +30,8 @@
     "jquery": "~3.2.1"
   },
   "devDependencies": {
+    "chai": "~3.5.0",
+    "mocha": "~3.3.0",
     "watch": "~1.0.2",
     "webpack": "~2.4.1"
   }
