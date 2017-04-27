@@ -1,7 +1,7 @@
 module.exports.h = h;
 
 function h(tag, attrs, content) {
-  const at = Object.keys(attrs).map(k => ` ${k}="${attrs[k]}"`).join('');
+  const at = Object.keys(attrs).map(k => `${k}="${attrs[k]}"`).join('');
 
   const cont = Array.isArray(content) ? content.join('') : content || '';
 
