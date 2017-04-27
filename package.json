@@ -1,0 +1,35 @@
+{
+  "name": "search-github-app",
+  "version": "0.1.0",
+  "description": "search github app",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:prepare": "mkdir -p dist",
+    "build:static": "cp src/index.html dist/ && cp src/style.css dist/",
+    "build:app": "webpack src/app.js dist/app.bundle.js",
+    "dev": "npm run build:prepare && watch 'npm run build:static && npm run build:app' src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/szhangpitt/search-github-app.git"
+  },
+  "keywords": [
+    "search",
+    "app",
+    "github"
+  ],
+  "author": "Shaopeng Zhang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/szhangpitt/search-github-app/issues"
+  },
+  "homepage": "https://github.com/szhangpitt/search-github-app#readme",
+  "dependencies": {
+    "jquery": "~3.2.1"
+  },
+  "devDependencies": {
+    "watch": "~1.0.2",
+    "webpack": "~2.4.1"
+  }
+}
