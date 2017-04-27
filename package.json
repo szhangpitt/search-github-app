@@ -8,6 +8,7 @@
     "build:prepare": "mkdir -p dist",
     "build:static": "cp src/index.html dist/ && cp src/style.css dist/",
     "build:app": "webpack src/app.js dist/app.bundle.js",
+    "build": "npm run build:prepare && npm run build:static && npm run build:app",
     "dev": "npm run build:prepare && watch 'npm run build:static && npm run build:app' src"
   },
   "repository": {
