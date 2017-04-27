@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    <pre id="target"></pre>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+
+        $.getJSON('https://api.github.com/search/users?q=zhang', function (data) {
+            console.log(data);
+            $('#target').html(JSON.stringify(data.items, null, 2));
+        });
+
+    </script>
+  </body>
+
+</html>
