@@ -1,0 +1,24 @@
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 1.5rem;
+}
+
+table {
+  margin-top: 2rem;
+}
+
+td > img {
+  width: 24px;
+}
+
+td > a {
+  text-decoration: none;
+  font-family: monospace;
+}
+
+input[type="text"], button {
+  box-sizing: border-box;
+  line-height: 1;
+  height: 2rem;
+  font-size: 1.5rem;
+}
