@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1>Search GitHub!</h1>
+    <form id="search-form">
+      <input type="text" id="search-input">
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="target"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      // Code goes here
+      console.clear();
+
+      $('#target')
+      .html(
+        h('p', {}, 'Enter keyword above')
+      );
+
+      $('#search-form')
+      .on(
+        'submit',
+        function(e){
+          var q = $('#search-input').val();
+
+          e.preventDefault();
+
+          console.log('make xhr call to github here!', q);
+
+          $('#target').html(h('p', {}, 'Searching...'));
+
+          $.getJSON(
+            'https://api.github.com/search/users?q=' + q,
+            function (data) {
+              console.log(data);
+
+              $('#target').html(
+                buildTable(data.items)
+              )
+            }
+          );
+        }
+      )
+
+      function buildTable (items) {
+        return !items.length
+        ? h('p', {}, 'No result found!')
+        : h(
+          'table',
+          {},
+          h(
+            'tbody',
+            {},
+            items.map((t) => h(
+                'tr',
+                {},
+                [
+                  h('td', {}, h('img', {src: t.avatar_url, style: 'width: 24px', class: 'ava'})),
+                  h('td', {}, t.login),
+                  h('td', {}, h('a', {href: t.html_url, target: '_blank'}, t.html_url)),
+                ]
+              )
+            )
+          )
+
+        );
+      }
+
+
+      function h (tag, attrs, content) {
+        const at =
+        Object.keys(attrs)
+        .map((k) =>
+          ` ${k}="${attrs[k]}"`
+        )
+        .join('');
+
+        const cont = Array.isArray(content)
+          ? content.join('')
+          : (content || '');
+
+        return `<${tag}${at}>${cont}</${tag}>`;
+      }
+    </script>
+  </body>
+
+</html>
